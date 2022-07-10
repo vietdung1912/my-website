@@ -8,16 +8,57 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <div id="main">
+    <div id="root">
         <div id="header">
-
+            <div class="wrapper">
+                <div class="row">
+                    <div class="title">My Todo List</div>
+                    <div class="list-info">2 more to do, 1 done.</div>
+                </div>
+            </div>
         </div>
         <div id="content">
-
+            <div class="wrapper">
+                <div class="search-task">
+                    <div class="input-content">
+                        <label>
+                            <input type="text" placeholder="Task name">
+                        </label>
+                    </div>
+                </div>
+                <div class="type-tasks">
+                    <div class="action active" onclick="activeTag(this)">All</div>
+                    <div class="action" onclick="activeTag(this)">Active</div>
+                    <div class="action" onclick="activeTag(this)">Done</div>
+                </div>
+                <div class="list-item">
+                    <div class="item">
+                        <div class="item-info">Task nayf laf task 2</div>
+                        <div class="delete-btn">Delete</div>
+                    </div>
+                    <div class="item">
+                        <div class="item-info">Task 1</div>
+                        <div class="delete-btn">Delete</div>
+                    </div>
+                    <div class="item">
+                        <div class="item-info">Task 1</div>
+                        <div class="delete-btn">Delete</div>
+                    </div>
+                    <div class="item">
+                        <div class="item-info">Task 1</div>
+                        <div class="delete-btn">Delete</div>
+                    </div>
+                    <div class="item">
+                        <div class="item-info">Task 1</div>
+                        <div class="delete-btn">Delete</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="footer">
             
         </div>
     </div>
+    <script src="./main.js"></script>
 </body>
 </html>

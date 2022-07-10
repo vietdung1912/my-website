@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.active {
+    color: #fff;
+    background-color: #004de6;
+}
+
+#root {
+    height: 568px;
+    width: 400px;
+    border: 1px solid red;
+    margin: auto;
+}
+
+.wrapper {
+    padding: 16px 24px;
+}
+
+.search-task {
+    display: block;
+    
+}
+
+.input-content{
+    padding: 16px 0;
+}
+
+.input-content input {
+    width: 100%;
+    font-size: 24px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+}
+
+.type-tasks li {
+    float: left;
+    line-height: 1.6;
+}
+
+.type-tasks {
+    display: flex;
+    width: 100%;
+}
+.type-tasks div {
+    width: calc(100%/3);
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.item {
+    display: flex;
+    width: 100%;
+    padding-top: 16px;
+}
+
+.item-info {
+    width: 80%;
+}
+.delete-btn {
+    width: 20%;
+}
