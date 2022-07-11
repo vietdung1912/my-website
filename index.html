@@ -9,54 +9,30 @@
 </head>
 <body>
     <div id="root">
-        <div id="header">
-            <div class="wrapper">
-                <div class="row">
-                    <div class="title">My Todo List</div>
-                    <div class="list-info">2 more to do, 1 done.</div>
-                </div>
+        <div class="main">
+            <div id="header">
+                <h1 class="title">My Todo List</h1>     
+                <div class="list-info"></div>
             </div>
-        </div>
-        <div id="content">
-            <div class="wrapper">
-                <div class="search-task">
-                    <div class="input-content">
-                        <label>
-                            <input type="text" placeholder="Task name">
-                        </label>
+            <div id="content">
+                <div class="wrapper-content wrapper">
+                    <div class="search-task">
+                        <div class="input-content">
+                            <input type="text" placeholder="Task name" oninput="searchTask(this)">
+                        </div>
                     </div>
-                </div>
-                <div class="type-tasks">
-                    <div class="action active" onclick="activeTag(this)">All</div>
-                    <div class="action" onclick="activeTag(this)">Active</div>
-                    <div class="action" onclick="activeTag(this)">Done</div>
-                </div>
-                <div class="list-item">
-                    <div class="item">
-                        <div class="item-info">Task nayf laf task 2</div>
-                        <div class="delete-btn" onclick="handleDelete(this)">Delete</div>
+                    <div class="type-tasks">
+                        <div class="action-type">
+                            <div class="action active" onclick="activeTag(this)">All</div>
+                            <div class="action" onclick="activeTag(this)">Active</div>
+                            <div class="action" onclick="activeTag(this)">Done</div>
+                        </div>
                     </div>
-                    <div class="item">
-                        <div class="item-info">Task 1</div>
-                        <div class="delete-btn" onclick="handleDelete(this)">Delete</div>
-                    </div>
-                    <div class="item">
-                        <div class="item-info">Task 2</div>
-                        <div class="delete-btn" onclick="handleDelete(this)">Delete</div>
-                    </div>
-                    <div class="item">
-                        <div class="item-info">Task 3</div>
-                        <div class="delete-btn" onclick="handleDelete(this)">Delete</div>
-                    </div>
-                    <div class="item">
-                        <div class="item-info">Task 4</div>
-                        <div class="delete-btn" onclick="handleDelete(this)">Delete</div>
+                    <div class="list-item">
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="footer">
-            <div class="add-task">
+            <div id="footer">
                 <input class="input-task" type="text" placeholder="Task name">
                 <button onclick="handleAddTask()">Add</button>
             </div>
