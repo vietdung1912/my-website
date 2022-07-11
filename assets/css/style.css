@@ -12,6 +12,15 @@ html, body {
     color: #fff;
     background-color: #004de6;
 }
+
+.checked {
+    color: green;
+}
+
+.checked > div {
+    text-decoration: line-through;
+}
+
 #root, .main {
     display: flex;
 }
@@ -21,19 +30,20 @@ html, body {
     height: 100%;
     justify-content: center;
     width: 100%;
+    background-color: #c2e7c9;
 }
 
 
 .main {
-    height: auto;
+    height: 100%;
     max-height: 568px;
     max-width: 400px;
     min-height: 568px;
     min-width: 400px;
-    /* border: 1px solid red; */
+    border-radius: 4px;
     position: relative;
     flex-direction: column;
-    
+    background-color: #9888fc;
 }
 
 
@@ -46,6 +56,7 @@ html, body {
 
 #content {
     overflow-y: auto;
+    height: 80%;
 }
 
 .input-content{
@@ -53,7 +64,7 @@ html, body {
     /* width: 100%; */
 }
 .search-task {
-    padding: 16px 24px;
+    padding: 0 24px 16px 24px;
 }
 
 .input-content input {
@@ -63,9 +74,6 @@ html, body {
     border-radius: 4px;
 
 }
-.type-tasks {
-    
-}
 
 .action-type {
     padding: 0 24px;
@@ -73,17 +81,22 @@ html, body {
 }
 
 .action-type div {
-    width: calc(100%/3);
+    width: calc(88%/3);
     float: left;
-    /* display: inline-block; */
+    line-height: 1.6;
     text-align: center;
     border: 1px solid #ccc;
     border-radius: 2px;
 }
 
+.action-type div:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
 
 .list-item {
-    padding: 0 0 0 24px;
+    padding: 0 24px;
 }
 
 .item-info {
@@ -102,22 +115,38 @@ html, body {
     display: flex;
     width: 100%;
     padding-top: 16px;
+    font-size: 20px;
 }
 
-/* .item-info {
-    width: 80%;
-} */
 .delete-btn {
-    width: 20%;
+    padding: 0 8px;
+    width: 5%;
+    color: red;
 }
 
 #footer {
+    bottom: 0px;
     padding: 16px 24px;
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     align-items: center;
 }
 
+.input-task {
+    width: 80%;
+    font-size: 24px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 .add-btn {
-    right: 0;
+    font-size: 24px;
+    border: none;
+    background-color: #4265D6;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.add-btn:hover {
+    color: red;
 }

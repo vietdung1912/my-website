@@ -1,17 +1,40 @@
 var listTask = [
-    'Task 1',
-    'Task 2',
-    'Task 3',
-    'Task 4',
-    'Task 5',
-    'Task 6',
-    'Task 7',
-    'Task 5',
-    'Task 6',
-    'Task 7',
-    'Task 5',
-    'Task 6',
-    'Task 7 Task 7 Task 7 Task 7 Task 7 Task 7 Task 7 Task 7',
+    {
+        name: 'Learn HyperText Markup Language.',
+        status: 'done'
+    },
+    {
+        name: 'Learn Cascading Style Sheets.',
+        status: 'active'
+    },
+    {
+        name: 'Learn JavaScript.',
+        status: 'done'
+    },
+    {
+        name: 'Learn React JS.',
+        status: 'active'
+    },
+    {
+        name: 'Learn PHP.',
+        status: 'active'
+    },
+    {
+        name: 'Learn Ruby.',
+        status: 'done'
+    },
+    {
+        name: 'Learn Java.',
+        status: 'done'
+    },
+    {
+        name: 'Learn Python.',
+        status: 'done'
+    },
+    {
+        name: 'Learn C#.',
+        status: 'active'
+    }
 ]
 
 function showNumberTask(listTask) {
@@ -20,18 +43,26 @@ function showNumberTask(listTask) {
 }
 
 function searchTask(element) {
-    var result = listTask.filter(task => task == element.value.trim())
+    var result = listTask.filter(task => {
+        return task.name.toUpperCase()
+        .indexOf(element.value.toUpperCase()) > -1 ? task.name: ''
+    })
     renderTask(result.length === 0 ? listTask : result)
     
+}
+
+function clearSearch(element) {
+    element.value = '';
 }
 
 function renderTask(listTask) {
     var htmls = document.querySelector('.list-item')
     var list = listTask.map(task => {
         return `
-            <div class='item'>
-                <div class="item-info">${task}</div>
-                <div class="delete-btn" onclick="handleDelete(this)">Delete</div>
+            <div class='item ${task.status === 'done'? 'checked' : ''}'>
+                <div class="item-info">${task.name}</div>
+                <i class="checked-btn ti-check-box" onclick="handleChecked(this)"></i>
+                <i class="delete-btn ti-trash" onclick="handleDelete(this)"></i>
             </div>
         `
     })
@@ -39,32 +70,71 @@ function renderTask(listTask) {
     htmls.innerHTML = list.join('')
 }
 
-function activeTag(element) {
+function showAllTask() {
+    var type = document.querySelectorAll('.action')
+    const allTask = document.querySelector('.action')
+    for (var index of type) {
+        index.classList.remove('active')
+    }
+    allTask.classList.add('active')
+    renderTask(listTask)
+}
+
+function activeTag(element = '') {
     var type = document.querySelectorAll('.action')
     for (var index of type) {
         index.classList.remove('active')
     }
     element.classList.add('active')
+    let tasks
+    switch(element.innerText) {
+        case 'Active':
+            tasks = listTask.filter(task => task.status === 'active');
+            renderTask(tasks)
+            break
+        case 'Done':
+            tasks = listTask.filter(task => task.status === 'done');
+            renderTask(tasks)
+            break
+        default:
+            renderTask(listTask)
+    }
 }
 
 function handleDelete(element) {
     var taskItem = element.parentElement;
+    var nameTask = element.parentElement.children[0].innerText;
     if (confirm("Are you sure?") == true){
-        taskItem.remove()
+        taskItem.remove(element.value)
+        listTask = listTask.filter(task => task.name !== nameTask)
         showNumberTask(listTask)
+    }
+}
+
+function handleChecked(element) {
+    var taskItem = element.parentElement;
+    var nameTask = element.parentElement.children[0].innerText;
+    var flag = taskItem.classList.toggle('checked');
+    for (var task of listTask) {
+        if (task.name === nameTask){
+            task.status = flag ? 'done':'active'
+        }
     }
 }
 
 function handleAddTask() {
     var input = document.querySelector(".input-task")
-    console.log(input.value)
     if (input.value === "") {
-        console.log("Empty input.")
+        alert("Empty input.")
     }
     else {
-        listTask.push(input.value)
+        listTask.push({
+            name: input.value,
+            status: 'active'
+        })
         input.value = ''
         renderTask(listTask)
+        showNumberTask(listTask)
     }
 }
 

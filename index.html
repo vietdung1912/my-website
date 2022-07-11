@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My style</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
 </head>
 <body>
     <div id="root">
@@ -18,7 +19,7 @@
                 <div class="wrapper-content wrapper">
                     <div class="search-task">
                         <div class="input-content">
-                            <input type="text" placeholder="Task name" oninput="searchTask(this)">
+                            <input type="text" placeholder="Search ..." oninput="searchTask(this)" onblur="clearSearch(this)">
                         </div>
                     </div>
                     <div class="type-tasks">
@@ -33,8 +34,8 @@
                 </div>
             </div>
             <div id="footer">
-                <input class="input-task" type="text" placeholder="Task name">
-                <button onclick="handleAddTask()">Add</button>
+                <input class="input-task" onfocus="showAllTask()" type="text" placeholder="Add task">
+                <button class="add-btn" onclick="handleAddTask()">Add</button>
             </div>
         </div>
     </div>
