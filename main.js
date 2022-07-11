@@ -80,26 +80,48 @@ function showAllTask() {
     renderTask(listTask)
 }
 
-function activeTag(element = '') {
+function showActiveTask() {
     var type = document.querySelectorAll('.action')
+    const activeTag = type[1]
     for (var index of type) {
         index.classList.remove('active')
     }
-    element.classList.add('active')
-    let tasks
-    switch(element.innerText) {
-        case 'Active':
-            tasks = listTask.filter(task => task.status === 'active');
-            renderTask(tasks)
-            break
-        case 'Done':
-            tasks = listTask.filter(task => task.status === 'done');
-            renderTask(tasks)
-            break
-        default:
-            renderTask(listTask)
-    }
+    activeTag.classList.add('active')
+    tasks = listTask.filter(task => task.status === 'active');
+    renderTask(tasks)
 }
+
+function showDoneTask() {
+    var type = document.querySelectorAll('.action')
+    const doneTask = type[2]
+    for (var index of type) {
+        index.classList.remove('active')
+    }
+    doneTask.classList.add('active')
+    tasks = listTask.filter(task => task.status === 'done');
+    renderTask(tasks)
+}
+
+// function activeTag(element = '') {
+//     var type = document.querySelectorAll('.action')
+//     for (var index of type) {
+//         index.classList.remove('active')
+//     }
+//     element.classList.add('active')
+//     let tasks
+//     switch(element.innerText) {
+//         case 'Active':
+//             tasks = listTask.filter(task => task.status === 'active');
+//             renderTask(tasks)
+//             break
+//         case 'Done':
+//             tasks = listTask.filter(task => task.status === 'done');
+//             renderTask(tasks)
+//             break
+//         default:
+//             renderTask(listTask)
+//     }
+// }
 
 function handleDelete(element) {
     var taskItem = element.parentElement;
@@ -112,12 +134,26 @@ function handleDelete(element) {
 }
 
 function handleChecked(element) {
+    const type = document.querySelector('.action-type > .active').innerText
     var taskItem = element.parentElement;
     var nameTask = element.parentElement.children[0].innerText;
     var flag = taskItem.classList.toggle('checked');
     for (var task of listTask) {
         if (task.name === nameTask){
-            task.status = flag ? 'done':'active'
+            if (type === 'All'){
+                task.status = flag ? 'done' : 'active'
+                showAllTask()
+            }
+            else { 
+                if(flag === true) {
+                    task.status = 'done'
+                    showActiveTask()
+                }
+                else {
+                    task.status = 'active'
+                    showDoneTask()
+                }
+            }
         }
     }
 }
