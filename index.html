@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My style</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <!-- <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css"> -->
 </head>
 <body>
     <div id="root">
@@ -19,7 +19,7 @@
                 <div class="wrapper-content wrapper">
                     <div class="search-task">
                         <div class="input-content">
-                            <input type="text" placeholder="Search ..." oninput="searchTask(this)" onblur="clearSearch(this)">
+                            <input type="text" placeholder="Search ..." onfocus="showAllTask()" oninput="searchTask(this)" onblur="clearSearch(this)">
                         </div>
                     </div>
                     <div class="type-tasks">

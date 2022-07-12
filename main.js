@@ -61,8 +61,8 @@ function renderTask(listTask) {
         return `
             <div class='item ${task.status === 'done'? 'checked' : ''}'>
                 <div class="item-info">${task.name}</div>
-                <i class="checked-btn ti-check-box" onclick="handleChecked(this)"></i>
-                <i class="delete-btn ti-trash" onclick="handleDelete(this)"></i>
+                <i class="fa-solid fa-calendar-check" onclick="handleChecked(this)"></i>
+                <i class="delete-btn fa-solid fa-trash-can" onclick="handleDelete(this)"></i>
             </div>
         `
     })
@@ -101,27 +101,6 @@ function showDoneTask() {
     tasks = listTask.filter(task => task.status === 'done');
     renderTask(tasks)
 }
-
-// function activeTag(element = '') {
-//     var type = document.querySelectorAll('.action')
-//     for (var index of type) {
-//         index.classList.remove('active')
-//     }
-//     element.classList.add('active')
-//     let tasks
-//     switch(element.innerText) {
-//         case 'Active':
-//             tasks = listTask.filter(task => task.status === 'active');
-//             renderTask(tasks)
-//             break
-//         case 'Done':
-//             tasks = listTask.filter(task => task.status === 'done');
-//             renderTask(tasks)
-//             break
-//         default:
-//             renderTask(listTask)
-//     }
-// }
 
 function handleDelete(element) {
     var taskItem = element.parentElement;
