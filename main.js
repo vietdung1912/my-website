@@ -1,38 +1,38 @@
 var listTask = [
     {
-        name: 'Learn HyperText Markup Language.',
+        name: 'Learn HyperText Markup Language',
         status: 'done'
     },
     {
-        name: 'Learn Cascading Style Sheets.',
+        name: 'Learn Cascading Style Sheets',
         status: 'active'
     },
     {
-        name: 'Learn JavaScript.',
+        name: 'Learn JavaScript',
         status: 'done'
     },
     {
-        name: 'Learn React JS.',
+        name: 'Learn React JS',
         status: 'active'
     },
     {
-        name: 'Learn PHP.',
+        name: 'Learn PHP',
         status: 'active'
     },
     {
-        name: 'Learn Ruby.',
+        name: 'Learn Ruby',
         status: 'done'
     },
     {
-        name: 'Learn Java.',
+        name: 'Learn Java',
         status: 'done'
     },
     {
-        name: 'Learn Python.',
+        name: 'Learn Python',
         status: 'done'
     },
     {
-        name: 'Learn C#.',
+        name: 'Learn C#',
         status: 'active'
     }
 ]
@@ -48,7 +48,6 @@ function searchTask(element) {
         .indexOf(element.value.toUpperCase()) > -1 ? task.name: ''
     })
     renderTask(result.length === 0 ? listTask : result)
-    
 }
 
 function clearSearch(element) {
@@ -139,18 +138,24 @@ function handleChecked(element) {
 
 function handleAddTask() {
     var input = document.querySelector(".input-task")
-    if (input.value === "") {
+    const inputValue = input.value.trim()
+    if (inputValue === "") {
         alert("Empty input.")
     }
     else {
-        listTask.push({
-            name: input.value,
-            status: 'active'
-        })
-        input.value = ''
+        const checkTask = listTask.find(task => task.name === inputValue)
+        if (!checkTask) {
+            listTask.push({
+                name: inputValue,
+                status: 'active'
+            })
+        }
+        else {
+            alert('Task already exists.')
+        }
+        input.value= ''
         renderTask(listTask)
         showNumberTask(listTask)
     }
 }
-
 renderTask(listTask)
