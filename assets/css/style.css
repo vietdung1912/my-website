@@ -12,6 +12,10 @@ html, body {
     background-color: #004de6;
 }
 
+.hidden {
+    display: none;
+}
+
 .checked {
     color: green;
 }
@@ -118,13 +122,21 @@ html, body {
     font-size: 20px;
 }
 
-.delete-btn {
-    padding: 0 8px;
+.delete-btn, .edit-btn, .check-btn {
+    padding: 0 4px;
     width: 5%;
+}
+
+.edit-btn {
+    color: #000;
+}
+
+.delete-btn {
     color: red;
 }
 
 #footer {
+    display: flex;
     bottom: 0px;
     padding: 16px 24px;
     justify-content: space-between;
@@ -132,13 +144,13 @@ html, body {
 }
 
 .input-task {
-    width: 80%;
+    width: 70%;
     font-size: 24px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.add-btn {
+.add-btn, .update-btn {
     font-size: 24px;
     border: none;
     background-color: #4265D6;

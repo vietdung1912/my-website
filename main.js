@@ -1,3 +1,8 @@
+const addBtn = document.querySelector(".add-btn")
+const updateBtn = document.querySelector(".update-btn")
+const type = document.querySelectorAll('.action')
+const input = document.querySelector(".input-task")
+
 var listTask = [
     {
         name: 'Learn HyperText Markup Language',
@@ -56,11 +61,12 @@ function clearSearch(element) {
 
 function renderTask(listTask) {
     var htmls = document.querySelector('.list-item')
-    var list = listTask.map(task => {
+    var list = listTask.map((task, index) => {
         return `
-            <div class='item ${task.status === 'done'? 'checked' : ''}'>
+            <div class='item ${task.status === 'done'? 'checked' : ''}' data-item='${index}'>
                 <div class="item-info">${task.name}</div>
-                <i class="fa-solid fa-calendar-check" onclick="handleChecked(this)"></i>
+                <i class="check-btn fa-solid fa-calendar-check" onclick="handleChecked(this)"></i>
+                <i class='edit-btn fa fa-edit'  onclick="handleEdit(this)"></i>
                 <i class="delete-btn fa-solid fa-trash-can" onclick="handleDelete(this)"></i>
             </div>
         `
@@ -70,7 +76,6 @@ function renderTask(listTask) {
 }
 
 function showAllTask() {
-    var type = document.querySelectorAll('.action')
     const allTask = document.querySelector('.action')
     for (var index of type) {
         index.classList.remove('active')
@@ -80,7 +85,6 @@ function showAllTask() {
 }
 
 function showActiveTask() {
-    var type = document.querySelectorAll('.action')
     const activeTag = type[1]
     for (var index of type) {
         index.classList.remove('active')
@@ -91,7 +95,6 @@ function showActiveTask() {
 }
 
 function showDoneTask() {
-    var type = document.querySelectorAll('.action')
     const doneTask = type[2]
     for (var index of type) {
         index.classList.remove('active')
@@ -109,6 +112,15 @@ function handleDelete(element) {
         listTask = listTask.filter(task => task.name !== nameTask)
         showNumberTask(listTask)
     }
+}
+
+function handleEdit(element) {
+    var taskItem = element.parentElement;
+    addBtn.classList.add('hidden')
+    updateBtn.classList.remove('hidden')
+    input.value = taskItem.innerText
+    input.setAttribute('data-index', taskItem.getAttribute('data-item'))
+    input.focus()
 }
 
 function handleChecked(element) {
@@ -137,7 +149,6 @@ function handleChecked(element) {
 }
 
 function handleAddTask() {
-    var input = document.querySelector(".input-task")
     const inputValue = input.value.trim()
     if (inputValue === "") {
         alert("Empty input.")
@@ -157,5 +168,19 @@ function handleAddTask() {
         renderTask(listTask)
         showNumberTask(listTask)
     }
+}
+
+function handleUpdateTask() {
+    const index = input.getAttribute('data-index')
+    console.log(input.value)
+    console.log(listTask[index])
+    if (confirm("Are you sure?") == true){
+        listTask[index].name = input.value
+    }
+    addBtn.classList.remove('hidden')
+    updateBtn.classList.add('hidden')
+    input.value= ''
+    renderTask(listTask)
+    showNumberTask(listTask)
 }
 renderTask(listTask)
